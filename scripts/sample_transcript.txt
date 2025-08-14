@@ -1,0 +1,9 @@
+Machine Learning is the field of study that gives computers the ability to learn without being explicitly programmed. It is a subset of artificial intelligence that focuses on the development of algorithms that can access data and use it to learn for themselves.
+
+The process of machine learning is similar to data mining. Both systems search through data to look for patterns. However, instead of extracting data for human comprehension, as is the case in data mining applications, machine learning uses that data to detect patterns in data and adjust program actions accordingly.
+
+Supervised learning is the machine learning task of inferring a function from labeled training data. The training data consist of a set of training examples. In supervised learning, each example is a pair consisting of an input object and a desired output value. A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples.
+
+Unsupervised learning is a type of machine learning algorithm used to draw inferences from datasets consisting of input data without labeled responses. The most common unsupervised learning method is cluster analysis, which is used for exploratory data analysis to find hidden patterns or grouping in data.
+
+Reinforcement learning is concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward. Due to its generality, reinforcement learning is studied in many disciplines, such as game theory, control theory, operations research, information theory, simulation-based optimization, multi-agent systems, swarm intelligence, statistics and genetic algorithms.

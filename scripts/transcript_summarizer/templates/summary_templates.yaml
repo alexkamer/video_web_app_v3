@@ -1,0 +1,352 @@
+# Summary templates for different video genres
+# Each template includes intro text, structure sections, tone, and emoji
+
+educational:
+  intro: "This educational video offers a comprehensive exploration of {title_topic}."
+  structure:
+    - "🎓 **Key Concepts Explained:**"
+    - "📚 **Main Learning Points:**"
+    - "💡 **Important Takeaways:**"
+    - "🔍 **Practical Applications:**"
+    - "📘 **Additional Resources Mentioned:**"
+    - "🔎 **Knowledge Base Verification:**"
+  tone: "informative and instructional"
+  emoji: "🎓"
+  keywords: ["educational", "learn", "course", "teach", "lesson", "class", "education", "lecture", "instructor", "curriculum", "study", "university", "school", "college", "academic", "professor", "student", "learning", "knowledge"]
+
+tutorial:
+  intro: "This step-by-step tutorial walks through {title_topic} with practical demonstrations and instructions."
+  structure:
+    - "🛠️ **Tutorial Overview:**"
+    - "📋 **Materials/Prerequisites:**"
+    - "📝 **Step-by-Step Process:**"
+    - "🚩 **Common Challenges & Solutions:**"
+    - "✅ **Final Results & Verification:**"
+  tone: "instructional and practical"
+  emoji: "📚"
+  keywords: ["tutorial", "how-to", "how to", "step-by-step", "guide", "walkthrough", "instruction", "demonstration", "how do i", "steps to", "beginner's guide", "DIY", "follow along", "create", "build", "implement", "setup", "install", "configure"]
+
+podcast:
+  intro: "In this engaging conversation about {title_topic}, the speakers explore various perspectives and insights."
+  structure:
+    - "🎙️ **Conversation Highlights:**"
+    - "💬 **Key Quotes:**"
+    - "🔍 **Main Discussion Points:**"
+    - "💡 **Unique Insights:**"
+    - "📌 **Resources & Recommendations:**"
+  tone: "conversational and exploratory"
+  emoji: "🎙️"
+  keywords: ["podcast", "episode", "conversation", "discussion", "talk", "dialogue", "speakers", "hosts", "guests", "interview series", "talk show", "audio", "radio", "episode", "show", "segment", "chat", "talking"]
+
+interview:
+  intro: "This interview delves into {title_topic}, offering personal insights and expert perspectives."
+  structure:
+    - "👤 **About the Guest:**"
+    - "💬 **Key Moments & Quotes:**"
+    - "🔑 **Main Discussion Points:**"
+    - "💡 **Expert Insights:**"
+    - "📌 **Mentioned Resources:**"
+  tone: "conversational and biographical"
+  emoji: "👤"
+  keywords: ["interview", "guest", "host", "Q&A", "questions", "answers", "conversation with", "speaking with", "sits down with", "exclusive", "one-on-one", "chat with", "meet", "talks with", "featuring", "profile"]
+
+entertainment:
+  intro: "This entertaining video presents {title_topic} in an engaging and enjoyable format."
+  structure:
+    - "🎬 **Highlight Moments:**"
+    - "🌟 **Standout Scenes:**"
+    - "😂 **Memorable Elements:**"
+    - "💫 **Creative Techniques:**"
+    - "🎭 **Overall Experience:**"
+  tone: "lively and entertaining"
+  emoji: "🎭"
+  keywords: ["entertainment", "fun", "amusing", "enjoyable", "entertainment", "variety", "show", "performance", "talent", "production", "skit", "act", "entertain", "entertaining", "variety show"]
+
+vlog:
+  intro: "This personal vlog chronicles experiences related to {title_topic}, sharing authentic moments and reflections."
+  structure:
+    - "📅 **Context & Setting:**"
+    - "🎬 **Key Moments:**"
+    - "✨ **Highlights & Experiences:**"
+    - "🤔 **Personal Reflections:**"
+    - "👋 **Closing Thoughts:**"
+  tone: "personal and authentic"
+  emoji: "📷"
+  keywords: ["vlog", "daily", "personal", "life", "day in the life", "follow me", "routine", "lifestyle", "diary", "journal", "daily vlog", "week in my life", "morning routine", "night routine", "follow along", "my day", "my life", "my experience", "living", "blogger"]
+
+news:
+  intro: "This news segment covers important developments regarding {title_topic}, providing context and analysis."
+  structure:
+    - "📰 **Headlines & Key Facts:**"
+    - "📊 **Background & Context:**"
+    - "🔍 **Analysis & Implications:**"
+    - "💬 **Expert Opinions:**"
+    - "⏭️ **Future Outlook:**"
+  tone: "informative and analytical"
+  emoji: "📰"
+  keywords: ["news", "commentary", "report", "breaking", "update", "latest", "headlines", "current events", "coverage", "story", "press", "bulletin", "broadcast", "reporter", "journalism", "world news", "report", "investigation", "media"]
+
+documentary:
+  intro: "This documentary presents an in-depth exploration of {title_topic}, revealing important insights and perspectives."
+  structure:
+    - "🔍 **Central Theme:**"
+    - "📚 **Historical Context:**"
+    - "👥 **Key Perspectives:**"
+    - "🧩 **Important Revelations:**"
+    - "💭 **Concluding Thoughts:**"
+  tone: "investigative and informative"
+  emoji: "🎬"
+  keywords: ["documentary", "investigation", "explore", "examine", "inside", "story", "history", "feature", "in-depth", "series", "presentation", "investigation", "behind the scenes", "untold story", "real story", "true story", "deep dive", "expose", "revealing"]
+
+review:
+  intro: "This review provides a critical assessment of {title_topic}, evaluating its strengths and weaknesses."
+  structure:
+    - "✨ **Overview & First Impressions:**"
+    - "👍 **Strengths & Highlights:**"
+    - "👎 **Limitations & Concerns:**"
+    - "⚖️ **Balanced Assessment:**"
+    - "⭐ **Final Rating & Recommendation:**"
+  tone: "analytical and evaluative"
+  emoji: "⭐"
+  keywords: ["review", "analysis", "critique", "evaluation", "rating", "honest review", "honest opinion", "pros and cons", "should you buy", "worth it", "not worth it", "recommendation", "verdict", "thoughts on", "product review", "testing", "hands-on", "first look", "unboxing", "impressions"]
+
+gaming:
+  intro: "This gaming video showcases {title_topic} with gameplay footage and commentary."
+  structure:
+    - "🎮 **Game & Setting:**"
+    - "🕹️ **Gameplay Highlights:**"
+    - "💪 **Strategies & Techniques:**"
+    - "🏆 **Achievements & Outcomes:**"
+    - "💬 **Player Commentary:**"
+  tone: "engaging and enthusiastic"
+  emoji: "🎮"
+  keywords: ["gaming", "gameplay", "game", "playthrough", "let's play", "walkthrough", "stream", "speedrun", "gaming channel", "esports", "twitch", "gamer", "Nintendo", "PlayStation", "Xbox", "PC gaming", "mobile gaming", "multiplayer", "battle", "strategy game", "RPG", "FPS"]
+
+sports:
+  intro: "This sports video covers {title_topic}, highlighting key plays and athletic performances."
+  structure:
+    - "🏆 **Event Context:**"
+    - "⚽ **Key Plays & Moments:**"
+    - "🌟 **Standout Performances:**"
+    - "📊 **Statistics & Analysis:**"
+    - "🔮 **Implications & Next Steps:**"
+  tone: "energetic and analytical"
+  emoji: "🏅"
+  keywords: ["sports", "highlight", "athletic", "game", "match", "tournament", "championship", "league", "team", "player", "football", "basketball", "soccer", "baseball", "tennis", "golf", "hockey", "wrestling", "boxing", "UFC", "MMA", "fitness", "competition", "workout", "sport"]
+
+movie_recap:
+  intro: "This recap summarizes and analyzes {title_topic}, covering the plot and key elements."
+  structure:
+    - "🎬 **Plot Overview:**"
+    - "👥 **Character Analysis:**"
+    - "🌟 **Key Scenes & Moments:**"
+    - "🔍 **Hidden Details & Easter Eggs:**"
+    - "💭 **Themes & Interpretations:**"
+  tone: "narrative and analytical"
+  emoji: "🍿"
+  keywords: ["movie", "recap", "film", "show", "series", "episode", "breakdown", "analysis", "ending explained", "review", "TV show", "season", "finale", "explained", "plot", "summary", "movies", "cinema", "scene", "character", "explained", "theory"]
+
+music:
+  intro: "This video showcases musical performances and content related to {title_topic}."
+  structure:
+    - "🎵 **Musical Context:**"
+    - "🎤 **Performance Highlights:**"
+    - "🌟 **Standout Elements:**"
+    - "🎧 **Audio Quality & Production:**"
+    - "💫 **Overall Impression:**"
+  tone: "appreciative and descriptive"
+  emoji: "🎵"
+  keywords: ["music", "performance", "concert", "song", "album", "artist", "band", "singer", "musician", "vocal", "live", "cover", "track", "remix", "official video", "music video", "lyrics", "acoustic", "studio", "recording", "instrumental"]
+
+cooking:
+  intro: "This cooking video demonstrates how to prepare {title_topic}, with step-by-step instructions and techniques."
+  structure:
+    - "🍳 **Recipe Overview:**"
+    - "📋 **Ingredients & Preparation:**"
+    - "👨‍🍳 **Cooking Techniques:**"
+    - "💡 **Tips & Variations:**"
+    - "🍽️ **Final Presentation:**"
+  tone: "instructional and enthusiastic"
+  emoji: "🍲"
+  keywords: ["cooking", "recipe", "food", "baking", "chef", "kitchen", "meal", "dish", "cuisine", "cook", "prepare", "homemade", "delicious", "tasty", "flavor", "ingredients", "dinner", "breakfast", "lunch", "dessert", "healthy eating", "culinary"]
+
+motivational:
+  intro: "This inspirational video provides motivation and guidance on {title_topic}, offering perspectives for personal growth."
+  structure:
+    - "💫 **Core Message:**"
+    - "💡 **Key Insights:**"
+    - "🚀 **Actionable Advice:**"
+    - "🌈 **Inspirational Elements:**"
+    - "💭 **Final Thoughts:**"
+  tone: "uplifting and encouraging"
+  emoji: "✨"
+  keywords: ["motivational", "self-help", "inspiration", "inspire", "motivation", "success", "mindset", "goals", "achievement", "personal development", "growth", "self-improvement", "life lessons", "advice", "tips for success", "transformation", "change your life", "purpose", "positive", "happiness"]
+
+technical:
+  intro: "This technical video explains {title_topic} in detail, covering implementation and best practices."
+  structure:
+    - "🔧 **Technical Overview:**"
+    - "📋 **Core Components & Concepts:**"
+    - "💻 **Implementation Details:**"
+    - "⚠️ **Challenges & Solutions:**"
+    - "📈 **Optimizations & Best Practices:**"
+  tone: "technical and precise"
+  emoji: "💻"
+  keywords: ["technical", "developer", "programming", "coding", "code", "software", "development", "engineering", "technology", "framework", "language", "algorithm", "system", "application", "computer science", "dev", "API", "database", "architecture", "solution", "IT"]
+
+business:
+  intro: "This business-focused video explores {title_topic}, providing insights for professional and financial contexts."
+  structure:
+    - "📊 **Market Context:**"
+    - "💼 **Business Strategies:**"
+    - "📈 **Growth & Opportunities:**"
+    - "🧠 **Expert Perspectives:**"
+    - "💰 **Financial Implications:**"
+  tone: "professional and analytical"
+  emoji: "💼"
+  keywords: ["business", "finance", "investment", "entrepreneur", "startup", "company", "marketing", "strategy", "leadership", "management", "economics", "industry", "market", "corporate", "commercial", "trade", "enterprise", "economy", "sales", "stock market", "financial", "money"]
+
+health:
+  intro: "This health and fitness video addresses {title_topic}, offering guidance for physical wellbeing."
+  structure:
+    - "💪 **Fitness Approach:**"
+    - "🏃 **Exercise Techniques:**"
+    - "🥗 **Health Recommendations:**"
+    - "⚠️ **Important Precautions:**"
+    - "🎯 **Expected Outcomes:**"
+  tone: "encouraging and informative"
+  emoji: "🏃‍♀️"
+  keywords: ["health", "fitness", "workout", "exercise", "diet", "nutrition", "wellness", "healthy", "weight loss", "training", "gym", "cardio", "strength", "muscle", "yoga", "meditation", "mindfulness", "mental health", "physical health", "medical", "healthcare", "body"]
+
+travel:
+  intro: "This travel video showcases {title_topic}, offering glimpses of destinations and travel experiences."
+  structure:
+    - "🌍 **Location Overview:**"
+    - "🏞️ **Highlighted Destinations:**"
+    - "🧳 **Travel Tips & Advice:**"
+    - "🍴 **Local Experiences:**"
+    - "💰 **Cost & Practical Information:**"
+  tone: "descriptive and enthusiastic"
+  emoji: "✈️"
+  keywords: ["travel", "destination", "tourism", "vacation", "trip", "journey", "adventure", "explore", "tour", "guide", "visit", "tourist", "traveler", "wanderlust", "backpacking", "sightseeing", "foreign", "international", "domestic", "hotel", "flight", "resort"]
+
+science:
+  intro: "This science-focused video explains {title_topic}, breaking down complex concepts into understandable explanations."
+  structure:
+    - "🔬 **Scientific Context:**"
+    - "🧪 **Key Principles & Concepts:**"
+    - "🔍 **Evidence & Research:**"
+    - "💡 **Practical Applications:**"
+    - "🌐 **Broader Implications:**"
+  tone: "educational and precise"
+  emoji: "🧪"
+  keywords: ["science", "explainer", "scientific", "research", "discovery", "experiment", "theory", "hypothesis", "biology", "chemistry", "physics", "astronomy", "geology", "environmental", "ecology", "psychology", "neuroscience", "technology", "innovation", "lab", "breakthrough"]
+
+comedy:
+  intro: "This comedy video presents {title_topic} in a humorous and entertaining way."
+  structure:
+    - "😂 **Comedic Setup:**"
+    - "🎭 **Hilarious Moments:**"
+    - "🎯 **Clever Elements:**"
+    - "😆 **Audience Reactions:**"
+    - "🎬 **Overall Entertainment Value:**"
+  tone: "humorous and light-hearted"
+  emoji: "😂"
+  keywords: ["comedy", "humor", "funny", "laugh", "joke", "comedic", "stand-up", "sketch", "parody", "satire", "comedy show", "comedian", "hilarious", "prank", "skit", "entertainment", "amusing", "humorous", "comedy sketch", "standup", "roast"]
+
+reaction:
+  intro: "This reaction video captures genuine responses to {title_topic}, with commentary and analysis."
+  structure:
+    - "🎬 **Initial Reactions:**"
+    - "🤔 **Key Observations:**"
+    - "💬 **Commentary Highlights:**"
+    - "😲 **Most Surprising Elements:**"
+    - "👏 **Final Thoughts & Rating:**"
+  tone: "spontaneous and engaging"
+  emoji: "😲"
+  keywords: ["reaction", "reacting to", "react", "watching", "first time watching", "first listen", "response", "impression", "reaction video", "reacts", "reviewing", "live reaction", "genuine reaction", "emotional reaction", "honest reaction", "commentary", "watching with"]
+
+unboxing:
+  intro: "This unboxing video reveals and examines {title_topic}, showing the product from first impression to detailed inspection."
+  structure:
+    - "📦 **Package & Presentation:**"
+    - "👀 **First Impressions:**"
+    - "🔍 **Product Details & Features:**"
+    - "⚙️ **Setup & Initial Testing:**"
+    - "💭 **Early Verdict & Thoughts:**"
+  tone: "curious and evaluative"
+  emoji: "📦"
+  keywords: ["unboxing", "package", "open box", "first look", "haul", "new", "just arrived", "delivery", "product", "opening", "setup", "box", "packaging", "merchandise", "collection", "reveal", "unpacking", "mail call", "first impressions"]
+
+debate:
+  intro: "This debate video presents different perspectives on {title_topic}, examining various arguments and viewpoints."
+  structure:
+    - "🎯 **Main Topic & Context:**"
+    - "🔵 **Position One Arguments:**"
+    - "🔴 **Position Two Arguments:**"
+    - "⚡ **Key Points of Contention:**"
+    - "🤝 **Areas of Agreement & Conclusion:**"
+  tone: "balanced and analytical"
+  emoji: "⚖️"
+  keywords: ["debate", "argument", "discussion", "discourse", "disagreement", "controversy", "versus", "vs", "against", "opposing views", "both sides", "perspective", "point of view", "opinion", "dialogue", "conversation", "dispute", "clash", "conflict", "argument"]
+
+history:
+  intro: "This historical video explores {title_topic}, providing context and insights into past events and their significance."
+  structure:
+    - "📜 **Historical Background:**"
+    - "⏳ **Key Events & Timeline:**"
+    - "👤 **Notable Figures:**"
+    - "🔄 **Causes & Effects:**"
+    - "🌐 **Legacy & Modern Relevance:**"
+  tone: "informative and narrative"
+  emoji: "📜"
+  keywords: ["history", "historical", "past", "ancient", "medieval", "civilization", "empire", "dynasty", "war", "battle", "revolution", "timeline", "heritage", "archaeology", "artifacts", "vintage", "traditional", "era", "century", "decade", "period"]
+
+diy:
+  intro: "This DIY video demonstrates how to create {title_topic} with hands-on instructions and practical techniques."
+  structure:
+    - "🛠️ **Project Overview:**"
+    - "🔨 **Materials & Tools Needed:**"
+    - "📝 **Step-by-Step Instructions:**"
+    - "💡 **Tips & Troubleshooting:**"
+    - "✅ **Final Results & Variations:**"
+  tone: "practical and encouraging"
+  emoji: "🔨"
+  keywords: ["DIY", "do it yourself", "craft", "make", "build", "homemade", "handmade", "project", "create", "maker", "crafting", "building", "woodworking", "upcycle", "repurpose", "transform", "hack", "home improvement", "renovation", "restoration", "repair"]
+
+technology:
+  intro: "This technology video covers {title_topic}, examining innovations and their practical applications."
+  structure:
+    - "🔍 **Technology Overview:**"
+    - "📱 **Key Features & Capabilities:**"
+    - "💻 **Technical Specifications:**"
+    - "⚙️ **Performance & Usability:**"
+    - "🔮 **Future Implications:**"
+  tone: "informative and forward-looking"
+  emoji: "📱"
+  keywords: ["technology", "tech", "gadget", "device", "electronics", "innovation", "digital", "smart", "AI", "artificial intelligence", "machine learning", "robotics", "future tech", "emerging tech", "cutting edge", "breakthrough", "IoT", "internet of things", "VR", "AR", "blockchain", "hardware", "software"]
+
+beauty:
+  intro: "This beauty video demonstrates techniques and products related to {title_topic}, offering tips and recommendations."
+  structure:
+    - "💄 **Beauty Context & Goals:**"
+    - "🧴 **Products & Tools Featured:**"
+    - "✨ **Application Techniques:**"
+    - "💡 **Tips & Tricks:**"
+    - "👁️ **Final Results & Recommendations:**"
+  tone: "enthusiastic and instructional"
+  emoji: "💄"
+  keywords: ["beauty", "makeup", "skincare", "hair", "cosmetics", "tutorial", "routine", "products", "look", "style", "fashion", "glamour", "makeover", "transformation", "aesthetic", "glam", "beauty routine", "self-care", "grooming"]
+
+# Default template for unknown genres
+default:
+  intro: "This video covers {title_topic}, providing valuable content and information."
+  structure:
+    - "📌 **Main Points:**"
+    - "💡 **Key Insights:**"
+    - "🔍 **Notable Details:**"
+    - "💬 **Important Quotes:**"
+    - "📝 **Concluding Thoughts:**"
+  tone: "informative and engaging"
+  emoji: "📺"
+  keywords: ["video", "content", "information", "overview", "presentation", "broadcast", "feature", "segment", "clip"]

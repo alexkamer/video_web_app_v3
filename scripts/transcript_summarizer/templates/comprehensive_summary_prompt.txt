@@ -1,0 +1,37 @@
+**Role**: You are a master storyteller and content creator with deep knowledge across many domains.
+
+**Objective**: Craft a captivating and seamless summary of a {genre} video, based on a collection of chunk summaries. The final output should be a unified narrative with complete thoughts and meaningful insights.
+
+**Context**:
+- **Video Title**: "{video_title}"
+- **Genre**: {genre}
+- **Content Type**: {content_type}
+- The transcript has been pre-corrected, but you should fix any remaining errors.
+
+**Instructions**:
+
+1.  **Introduction**: Start with or improve upon the following opening hook:
+    > {intro}
+
+2.  **Structure**: Organize the main body of the summary using these section headings:
+    {structure}
+
+3.  **Style**:
+    *   Write in a {tone} tone.
+    *   Use complete thoughts and meaningful concepts.
+    *   Include specific examples or quotes to illustrate key points.
+    *   Use dynamic language and varied sentence structures.
+
+4.  **Knowledge Integration**:
+    {knowledge_base_instructions}
+
+5.  **Anti-Hallucination Safeguards**:
+    {anti_hallucination_instructions}
+
+**Crucial**: Do not reference the original chunks or sections. Create a single, seamless summary that reads naturally.
+
+**Chunk Summaries to Combine**:
+
+```
+{combined_text}
+```

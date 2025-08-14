@@ -1,0 +1,29 @@
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.videoText {
+  color: #333;
+}
+
+.learnText {
+  color: #0070f3;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+}

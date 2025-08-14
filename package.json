@@ -1,0 +1,42 @@
+{
+  "name": "video-learning-web-app",
+  "version": "0.1.0",
+  "description": "An interactive web application for searching, watching, and learning from educational videos with AI-powered features",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8051",
+    "build": "next build",
+    "start": "next start -p 8051",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@azure/openai": "^2.0.0",
+    "@babel/runtime": "^7.28.2",
+    "dotenv": "^17.2.0",
+    "next": "^15.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tmp": "^0.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-next": "^13.4.19"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "video-learning",
+    "ai-summary",
+    "transcript",
+    "youtube",
+    "nextjs",
+    "react",
+    "education"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,124 @@
+# Hybrid templates for content that spans multiple genres
+# These templates can be used when content fits multiple categories
+
+educational_entertainment:
+  intro: "This educational entertainment video presents {title_topic} in an engaging and informative way."
+  structure:
+    - "📚 **Key Learning Points:**"
+    - "🎭 **Entertaining Elements:**"
+    - "💡 **Interesting Insights:**"
+    - "🧠 **Complex Concepts Made Simple:**"
+    - "🎬 **Most Memorable Moments:**"
+  tone: "engaging yet informative"
+  emoji: "🎓"
+  keywords: ["edutainment", "fun learning", "educational entertainment", "learning fun", "entertaining education"]
+
+tutorial_review:
+  intro: "This tutorial review explores {title_topic}, providing both instructional guidance and critical analysis."
+  structure:
+    - "🛠️ **Product/Tool Overview:**"
+    - "👍 **Strengths & Capabilities:**"
+    - "👎 **Limitations & Challenges:**"
+    - "📝 **Implementation Tips & Techniques:**"
+    - "⭐ **Final Assessment & Recommendations:**"
+  tone: "practical and evaluative"
+  emoji: "📋"
+  keywords: ["tutorial review", "how to review", "product tutorial", "hands-on review", "practical review"]
+
+tech_education:
+  intro: "This technical educational video explains {title_topic} with detailed technical concepts and teaching methodology."
+  structure:
+    - "💻 **Technical Overview:**"
+    - "🧩 **Core Concepts Explained:**"
+    - "⚙️ **Implementation Details:**"
+    - "🔍 **Practical Examples:**"
+    - "📈 **Learning Progression & Next Steps:**"
+  tone: "technical yet accessible"
+  emoji: "⚙️"
+  keywords: ["tech education", "technical learning", "programming tutorial", "coding education", "technical skills", "tech learning"]
+
+documentary_interview:
+  intro: "This documentary-style interview explores {title_topic} through in-depth conversations and contextual information."
+  structure:
+    - "👤 **Subject Background & Context:**"
+    - "🎤 **Key Interview Highlights:**"
+    - "📚 **Historical/Factual Context:**"
+    - "💬 **Notable Quotes & Perspectives:**"
+    - "🧩 **Connecting Themes & Insights:**"
+  tone: "informative and conversational"
+  emoji: "🎙️"
+  keywords: ["documentary interview", "expert conversation", "in-depth interview", "subject exploration", "talking heads"]
+
+gaming_tutorial:
+  intro: "This gaming tutorial demonstrates strategies and techniques for {title_topic} with gameplay examples."
+  structure:
+    - "🎮 **Game & Mode Overview:**"
+    - "🕹️ **Basic Mechanics & Controls:**"
+    - "🏆 **Strategies & Advanced Techniques:**"
+    - "⚠️ **Common Mistakes & Challenges:**"
+    - "🔥 **Tips for Improvement & Mastery:**"
+  tone: "enthusiastic and instructional"
+  emoji: "🎮"
+  keywords: ["gaming tutorial", "game guide", "how to play", "gameplay tutorial", "gaming tips", "walkthrough"]
+
+science_entertainment:
+  intro: "This entertaining science video presents {title_topic} with engaging demonstrations and accessible explanations."
+  structure:
+    - "🔬 **Scientific Concept Introduction:**"
+    - "🎭 **Entertaining Demonstrations:**"
+    - "💡 **Key Scientific Principles:**"
+    - "😮 **Surprising Facts & Revelations:**"
+    - "🧠 **Real-World Applications & Implications:**"
+  tone: "enthusiastic and educational"
+  emoji: "🧪"
+  keywords: ["science show", "fun science", "science entertainment", "scientific demonstration", "science experiments", "science fun"]
+
+cooking_vlog:
+  intro: "This cooking vlog shares the experience of preparing {title_topic} with personal stories and recipe instructions."
+  structure:
+    - "👨‍🍳 **Personal Context & Setting:**"
+    - "📋 **Recipe & Ingredients:**"
+    - "🍳 **Cooking Process & Techniques:**"
+    - "🌟 **Personal Tips & Variations:**"
+    - "🍽️ **Final Result & Tasting Experience:**"
+  tone: "personal and instructional"
+  emoji: "🍳"
+  keywords: ["cooking vlog", "recipe vlog", "cooking at home", "personal cooking", "home cooking", "cooking experience", "food journey"]
+
+movie_analysis:
+  intro: "This movie analysis video examines {title_topic} with both plot recap and critical interpretation."
+  structure:
+    - "🎬 **Film Overview & Context:**"
+    - "📝 **Plot Summary & Key Scenes:**"
+    - "🧩 **Thematic Analysis:**"
+    - "🎭 **Character Development & Performances:**"
+    - "🔍 **Technical Elements & Direction:**"
+    - "💭 **Critical Assessment & Cultural Impact:**"
+  tone: "analytical and narrative"
+  emoji: "🎞️"
+  keywords: ["movie analysis", "film essay", "cinema breakdown", "movie critique", "film theory", "movie explained", "film study"]
+
+fitness_motivation:
+  intro: "This fitness motivation video combines practical exercises for {title_topic} with inspirational content."
+  structure:
+    - "💪 **Fitness Goals & Benefits:**"
+    - "🏋️ **Exercise Demonstrations:**"
+    - "🚀 **Motivational Insights:**"
+    - "📊 **Progress Tracking & Expectations:**"
+    - "💭 **Mindset & Psychological Approaches:**"
+  tone: "energetic and encouraging"
+  emoji: "💪"
+  keywords: ["fitness motivation", "workout inspiration", "exercise motivation", "fitness journey", "motivational workout", "fitness mindset"]
+
+tech_review:
+  intro: "This technical review evaluates {title_topic} with detailed testing and expert analysis."
+  structure:
+    - "📱 **Product/Technology Overview:**"
+    - "⚙️ **Technical Specifications:**"
+    - "🧪 **Testing Methodology & Results:**"
+    - "👍 **Strengths & Innovations:**"
+    - "👎 **Limitations & Considerations:**"
+    - "💰 **Value Assessment & Recommendations:**"
+  tone: "analytical and technical"
+  emoji: "🔍"
+  keywords: ["tech review", "product analysis", "technical evaluation", "technology assessment", "gadget review", "detailed review", "tech deep dive"]

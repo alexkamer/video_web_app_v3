@@ -1,0 +1,65 @@
+**Role**: You are a video content analyst with expertise in categorizing videos across all genres and formats.
+
+**Objective**: Analyze the provided video transcript and title to determine its genre and content type.
+
+**Context**:
+- The video title is: "{video_title}"
+
+**Instructions**:
+
+1.  **Analyze the Content**: 
+    *   Pay close attention to language patterns, technical terminology, and structural clues.
+    *   Consider the main purpose of the video (e.g., to educate, entertain, inform).
+
+2.  **Select Categories**:
+    *   Choose the most dominant genre and content type from the lists below.
+
+3.  **Output Format**: 
+    *   Respond with **only** a JSON object with two fields: `"genre"` and `"content_type"`.
+
+**Video Genres/Formats to Consider**:
+- Educational/Tutorial
+- Podcast/Interview
+- Entertainment/Vlog
+- News/Commentary
+- Documentary
+- Review/Analysis
+- Gaming
+- Sports/Highlights
+- Movie/Show Recap
+- Music/Performance
+- Cooking/Recipe
+- Motivational/Self-help
+- Technical/Developer
+- Business/Finance
+- Health/Fitness
+- Travel
+- Art/Creative
+- Science/Explainer
+- Comedy/Entertainment
+- Reaction
+- Unboxing
+- Debate
+- History
+- DIY/Crafts
+- Technology
+- Beauty/Fashion
+
+**Content Types to Consider**:
+- Instructional
+- Informational
+- Conversational
+- Narrative
+- Analytical
+- Demonstrative
+- Entertaining
+- Persuasive
+- Inspirational
+- Evaluative
+- Interactive
+
+**Transcript Sample**:
+
+```
+{transcript_sample}
+```

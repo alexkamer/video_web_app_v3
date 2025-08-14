@@ -1,0 +1,58 @@
+[project]
+name = "video-learning-web-app"
+version = "0.1.0"
+description = "An interactive web application for searching, watching, and learning from educational videos with AI-powered features"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["video-learning", "ai-summary", "transcript", "youtube", "education"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Multimedia :: Video",
+]
+
+dependencies = [
+    "agno",
+    "aiohttp",
+    "fastapi",
+    "httpx",
+    "openai",
+    "passlib",
+    "psycopg[binary]",
+    "pydantic",
+    "python-dotenv",
+    "python-jose",
+    "python-multipart",
+    "requests",
+    "psutil",
+    "sqlalchemy",
+    "uvicorn",
+    "yt-dlp",
+    "youtube-transcript-api",
+    "azure-identity",
+    "packaging>=25.0",
+    "setuptools>=80.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "flake8",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
