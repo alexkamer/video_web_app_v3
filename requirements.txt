@@ -1,19 +1,11 @@
 # Core dependencies
 agno
 aiohttp
-fastapi
 httpx
 openai
-passlib
-psycopg[binary]
-pydantic
 python-dotenv
-python-jose
-python-multipart
 requests
 psutil
-sqlalchemy
-uvicorn
 yt-dlp
 youtube-transcript-api
 azure-identity
