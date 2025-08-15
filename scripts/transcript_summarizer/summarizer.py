@@ -308,13 +308,14 @@ class TranscriptSummarizer:
             return {"genre": "educational", "content_type": "informational"}
     
     async def create_comprehensive_summary_async(self, chunk_summaries: List[str], 
-                                               video_title: str, transcript_text: str) -> str:
+                                               video_title: str, transcript_text: str, difficulty: str = "Normal") -> str:
         """Create a comprehensive summary from all chunk summaries (async version)
         
         Args:
             chunk_summaries (list): List of individual chunk summaries
             video_title (str): Title of the video
             transcript_text (str): Full transcript text (for genre detection)
+            difficulty (str): The desired vocabulary difficulty of the summary
             
         Returns:
             str: Comprehensive summary
@@ -373,16 +374,24 @@ class TranscriptSummarizer:
             if len(valid_summaries) < len(chunk_summaries):
                 incomplete_note = "\n\n**IMPORTANT NOTE**: Some transcript sections could not be processed. Your summary should note that it may be incomplete.\n"
             
+            # Get sentiment and tone from genre detection, with fallbacks
+            sentiment = genre_info.get("sentiment", "neutral")
+            tone = genre_info.get("tone", template["tone"])
+            engagement_style = genre_info.get("engagement_style", "informative")
+            
             prompt = self.comprehensive_summary_prompt.format(
                 genre=genre_info["genre"],
                 content_type=genre_info["content_type"],
+                sentiment=sentiment,
+                tone=tone,
+                engagement_style=engagement_style,
                 video_title=video_title,
                 intro=template["intro"].format(title_topic=title_topic),
                 structure=structure_items,
-                tone=template["tone"],
                 knowledge_base_instructions=knowledge_base_instructions,
                 anti_hallucination_instructions=anti_hallucination_instructions,
-                combined_text=combined_text
+                combined_text=combined_text,
+                difficulty=difficulty
             ) + incomplete_note
             
             # Use async execution
@@ -396,7 +405,10 @@ class TranscriptSummarizer:
                 formatted_summary += "\n\n---\n\n**Note**: This summary was created with incomplete data. The following sections could not be processed:\n"
                 formatted_summary += "\n".join(error_notes)
             
-            return formatted_summary
+            # Prettify the summary for better visual appeal
+            prettified_summary = await self.prettify_summary_async(formatted_summary)
+            
+            return prettified_summary
             
         except Exception as e:
             if self.debug_output:
@@ -419,12 +431,44 @@ class TranscriptSummarizer:
                 # Ultimate fallback if no valid summaries at all
                 return generate_basic_summary(transcript_text[:10000], video_title)
     
-    async def summarize_async(self, transcript_text: str, video_title: str) -> str:
+    async def prettify_summary_async(self, summary_text: str) -> str:
+        """Prettify a summary to make it more visually appealing and readable (async version)
+        
+        Args:
+            summary_text (str): The summary text to prettify
+            
+        Returns:
+            str: The prettified summary with enhanced formatting
+        """
+        try:
+            # Load the prettifier prompt template
+            prettifier_prompt = load_prompt_template("summary_prettifier_prompt")
+            
+            # Format the prompt with the summary text
+            prompt = prettifier_prompt.format(summary_text=summary_text)
+            
+            # Use the prettifier agent to enhance the summary
+            response = await self.agents["prettifier_agent"].arun(prompt)
+            
+            if self.debug_output:
+                print("Summary prettification completed successfully")
+            
+            return response.content
+            
+        except Exception as e:
+            if self.debug_output:
+                print(f"Error prettifying summary: {e}")
+                print("Returning original summary without prettification")
+            # Return the original summary if prettification fails
+            return summary_text
+    
+    async def summarize_async(self, transcript_text: str, video_title: str, difficulty: str = "Normal") -> str:
         """Summarize a transcript asynchronously with memory safeguards
         
         Args:
             transcript_text (str): The full transcript text
             video_title (str): Title of the video
+            difficulty (str): The desired vocabulary difficulty of the summary
             
         Returns:
             str: Generated summary
@@ -611,7 +655,7 @@ class TranscriptSummarizer:
             # Create comprehensive summary from all chunks (async)
             if self.debug_output:
                 print("Creating comprehensive summary from all chunks...")
-            summary = await self.create_comprehensive_summary_async(chunk_summaries, video_title, transcript_text)
+            summary = await self.create_comprehensive_summary_async(chunk_summaries, video_title, transcript_text, difficulty)
             
             # Final memory check
             if monitor_memory:
@@ -653,45 +697,48 @@ class TranscriptSummarizer:
             truncated_text = transcript_text[:100000] if len(transcript_text) > 100000 else transcript_text
             return generate_basic_summary(truncated_text, video_title)
     
-    def summarize(self, transcript_text: str, video_title: str) -> str:
+    def summarize(self, transcript_text: str, video_title: str, difficulty: str = "Normal") -> str:
         """Synchronous wrapper for async summarization
         
         Args:
             transcript_text (str): The full transcript text
             video_title (str): Title of the video
+            difficulty (str): The desired vocabulary difficulty of the summary
             
         Returns:
             str: Generated summary
         """
         # Run the async summarization in the event loop
-        return asyncio.run(self.summarize_async(transcript_text, video_title))
+        return asyncio.run(self.summarize_async(transcript_text, video_title, difficulty))
 
 
 # Standalone functions for backward compatibility
-async def summarize_transcript_async(transcript_text: str, video_title: str, debug_output: bool = True) -> str:
+async def summarize_transcript_async(transcript_text: str, video_title: str, debug_output: bool = True, difficulty: str = "Normal") -> str:
     """Async function to summarize a transcript
     
     Args:
         transcript_text (str): The full transcript text
         video_title (str): Title of the video
         debug_output (bool): Whether to print debugging information
+        difficulty (str): The desired vocabulary difficulty of the summary
         
     Returns:
         str: Generated summary
     """
     summarizer = TranscriptSummarizer(debug_output=debug_output)
-    return await summarizer.summarize_async(transcript_text, video_title)
+    return await summarizer.summarize_async(transcript_text, video_title, difficulty)
 
-def summarize_transcript(transcript_text: str, video_title: str, debug_output: bool = True) -> str:
+def summarize_transcript(transcript_text: str, video_title: str, debug_output: bool = True, difficulty: str = "Normal") -> str:
     """Synchronous function to summarize a transcript
     
     Args:
         transcript_text (str): The full transcript text
         video_title (str): Title of the video
         debug_output (bool): Whether to print debugging information
+        difficulty (str): The desired vocabulary difficulty of the summary
         
     Returns:
         str: Generated summary
     """
     summarizer = TranscriptSummarizer(debug_output=debug_output)
-    return summarizer.summarize(transcript_text, video_title)
+    return summarizer.summarize(transcript_text, video_title, difficulty)

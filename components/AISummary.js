@@ -66,7 +66,7 @@ export default function AISummary({ videoId, videoTitle, transcript, onSummaryLo
           transcript,
           videoTitle,
           videoId,
-          usePython // Always true to use the Python-based team summarization
+          usePython, // Always true to use the Python-based team summarization
         }),
       });
       
@@ -127,7 +127,7 @@ export default function AISummary({ videoId, videoTitle, transcript, onSummaryLo
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId, videoTitle, transcript?.length, existingSummary]); // Using transcript.length to avoid deep comparison
-  
+
   // Render markdown summary
   const formattedSummary = summary ? (
     <>
@@ -135,7 +135,7 @@ export default function AISummary({ videoId, videoTitle, transcript, onSummaryLo
         <span className={styles.summaryTypeBadge}>
           AI Summary
         </span>
-        {processingTime && <span className={styles.processingTime}>Generated in {processingTime}s</span>}
+        {processingTime && <span className={styles.processingTime}>⚡ Generated in {processingTime}s</span>}
       </div>
       <div className={styles.markdown}>
         <ReactMarkdown
@@ -201,7 +201,7 @@ export default function AISummary({ videoId, videoTitle, transcript, onSummaryLo
         ) : (
           <div className={styles.empty}>
             <p>No summary available yet</p>
-            <span>Select a summary type above and the summary will be generated automatically</span>
+            <span>The summary will be generated automatically</span>
           </div>
         )}
       </div>

@@ -1,11 +1,15 @@
 **Role**: You are a master storyteller and content creator with deep knowledge across many domains.
 
-**Objective**: Craft a captivating and seamless summary of a {genre} video, based on a collection of chunk summaries. The final output should be a unified narrative with complete thoughts and meaningful insights.
+**Objective**: Craft a captivating and seamless summary of a {genre} video, based on a collection of chunk summaries. The final output should be a unified narrative with complete thoughts and meaningful insights that is visually appealing and enjoyable to read.
 
 **Context**:
 - **Video Title**: "{video_title}"
 - **Genre**: {genre}
 - **Content Type**: {content_type}
+- **Sentiment**: {sentiment}
+- **Tone**: {tone}
+- **Engagement Style**: {engagement_style}
+- **Vocabulary Difficulty**: {difficulty}
 - The transcript has been pre-corrected, but you should fix any remaining errors.
 
 **Instructions**:
@@ -16,19 +20,64 @@
 2.  **Structure**: Organize the main body of the summary using these section headings:
     {structure}
 
-3.  **Style**:
-    *   Write in a {tone} tone.
+3.  **Style & Tone Adaptation**:
+    *   **Match the detected tone**: Write in a {tone} tone that matches the video's emotional energy.
+    *   **Adapt to sentiment**: If sentiment is positive, be enthusiastic and uplifting. If neutral, be balanced and informative. If negative, be empathetic and constructive.
+    *   **Engagement style**: Use {engagement_style} techniques to match how the original content engages viewers.
+    *   **Genre-specific language**: Use terminology and expressions appropriate for {genre} content.
     *   Use complete thoughts and meaningful concepts.
     *   Include specific examples or quotes to illustrate key points.
     *   Use dynamic language and varied sentence structures.
 
-4.  **Knowledge Integration**:
+4.  **Visual Formatting & Readability**:
+    *   **Use Markdown formatting** to enhance readability:
+        - Use **bold** for key concepts, important terms, and main points
+        - Use *italics* for emphasis and interesting insights
+        - Use bullet points (•) for lists of key takeaways
+        - Use numbered lists for step-by-step processes
+        - Use blockquotes (>) for memorable quotes or important highlights
+        - Use `code formatting` for technical terms, names, or specific data
+    *   **Break up text** with clear section headers and subheaders
+    *   **Use white space** effectively - don't create walls of text
+    *   **Highlight key insights** with bold formatting
+    *   **Add visual hierarchy** with different heading levels
+    *   **Include engaging elements** like:
+        - "💡 **Key Insight**: [important point]"
+        - "🎯 **Main Takeaway**: [core message]"
+        - "📊 **Quick Facts**: [interesting data]"
+        - "🔍 **Deep Dive**: [detailed explanation]"
+        - "⚡ **Pro Tip**: [practical advice]"
+        - "🎬 **Highlight**: [memorable moment]"
+
+5.  **Genre-Specific Enhancements**:
+    *   **Educational/Tutorial**: Focus on learning outcomes, step-by-step processes, and practical applications
+    *   **Gaming**: Emphasize gameplay mechanics, strategies, and entertainment value
+    *   **Sports/Highlights**: Highlight key moments, statistics, and dramatic elements
+    *   **Music/Performance**: Focus on artistic elements, emotional impact, and technical skill
+    *   **Movie/Trailer**: Emphasize storytelling, visual elements, and entertainment value
+    *   **Documentary**: Focus on facts, discoveries, and educational value
+    *   **Technical/Developer**: Emphasize technical details, code examples, and practical implementation
+    *   **Business/Finance**: Focus on insights, strategies, and actionable advice
+    *   **Comedy/Entertainment**: Maintain humor and entertainment value while being informative
+    *   **Motivational/Self-help**: Inspire and encourage while providing practical guidance
+
+6.  **Knowledge Integration**:
     {knowledge_base_instructions}
 
-5.  **Anti-Hallucination Safeguards**:
+7.  **Anti-Hallucination Safeguards**:
     {anti_hallucination_instructions}
 
-**Crucial**: Do not reference the original chunks or sections. Create a single, seamless summary that reads naturally.
+8.  **Vocabulary**:
+    *   Adjust the vocabulary of the summary to a **{difficulty}** level.
+
+9.  **Final Polish**:
+    *   Ensure the summary flows naturally from start to finish
+    *   Make it engaging and easy to scan
+    *   Use formatting to guide the reader's eye
+    *   End with a strong conclusion that ties everything together
+    *   Match the emotional energy and engagement style of the original content
+
+**Crucial**: Do not reference the original chunks or sections. Create a single, seamless summary that reads naturally and is visually appealing.
 
 **Chunk Summaries to Combine**:
 

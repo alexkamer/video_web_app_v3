@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // Default configuration
     const quizConfig = {
       difficulty: config?.difficulty || 'medium', // 'easy', 'medium', 'hard'
-      questionCount: config?.questionCount || 5, // Number of questions to generate
+      contentDensity: config?.contentDensity || 'medium', // 'low', 'medium', 'high'
       includeExplanations: config?.includeExplanations !== false // Whether to include explanations
     };
 
@@ -45,9 +45,10 @@ export default async function handler(req, res) {
     let questions;
     
     try {
-      // Try AI-powered question generation
+      // Try AI-powered question generation with fallback
+      console.log("🎯 QUIZ: Attempting question generation with AI fallback...");
       questions = await generateAIQuestions(transcript, summary, videoId, quizConfig);
-      console.log(`Generated ${questions.length} AI-powered questions for video ${videoId}`);
+      console.log(`Generated ${questions.length} questions for video ${videoId}`);
       
       // Print detailed question information
       console.log('\n===== GENERATED QUESTIONS DETAILS =====');
@@ -76,11 +77,11 @@ export default async function handler(req, res) {
         console.log('-------------------------------');
       });
       console.log('=========================================\n');
-    } catch (aiError) {
-      console.error('AI question generation failed, using algorithmic fallback:', aiError);
-      // Fallback to algorithmic generation is removed. Instead, we will show an error.
-      console.error('AI question generation failed:', aiError);
-      throw new Error('AI question generation failed. Please try again.');
+    } catch (error) {
+      console.error('Question generation failed:', error);
+      console.error('Error details:', error.message);
+      console.error('Error stack:', error.stack);
+      throw new Error(`Quiz generation failed: ${error.message}`);
     }
 
     // Assign timestamps using actual video duration if available
@@ -111,9 +112,11 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error generating quiz questions:', error);
+    console.error('Error stack:', error.stack);
     return res.status(500).json({
       success: false,
-      message: 'Failed to generate quiz questions'
+      message: 'Failed to generate quiz questions',
+      error: error.message
     });
   }
 }
@@ -149,7 +152,7 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
         return reject(new Error('Invalid transcript format'));
       }
       
-      if (!transcriptText || transcriptText.trim().length < 100) {
+      if (!transcriptText || transcriptText.trim().length < 5) {
         return reject(new Error('Transcript text too short for AI question generation'));
       }
       
@@ -165,15 +168,18 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
       // Create a temporary file for the transcript
       const tmpFile = path.join(os.tmpdir(), `transcript-${videoId}-${Date.now()}.txt`);
       fs.writeFileSync(tmpFile, transcriptText, 'utf-8');
+      console.log(`Created transcript file: ${tmpFile} (${transcriptText.length} chars)`);
+      console.log(`Transcript preview: ${transcriptText.substring(0, 200)}...`);
 
       // Create a temporary file for the summary
       const summaryFile = path.join(os.tmpdir(), `summary-${videoId}-${Date.now()}.txt`);
       fs.writeFileSync(summaryFile, summary, 'utf-8');
+      console.log(`Created summary file: ${summaryFile} (${summary.length} chars)`);
+      console.log(`Summary preview: ${summary.substring(0, 200)}...`);
       
       // Build the prompt for quiz generation
       const videoTitle = `Video ${videoId}`;
       const difficulty = config.difficulty;
-      const numQuestions = config.questionCount;
       
       // Path to the Python script for quiz generation
       const scriptPath = path.join(process.cwd(), 'scripts', 'generate_quiz.py');
@@ -185,9 +191,16 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
       }
       
       // Use Python virtual environment if available
-      const pythonPath = process.env.VIRTUAL_ENV 
-        ? path.join(process.env.VIRTUAL_ENV, 'bin', 'python')
-        : path.join(process.cwd(), '.venv', 'bin', 'python');
+      let pythonPath;
+      if (process.env.VIRTUAL_ENV) {
+        pythonPath = path.join(process.env.VIRTUAL_ENV, 'bin', 'python');
+      } else if (fs.existsSync(path.join(process.cwd(), '.venv', 'bin', 'python'))) {
+        pythonPath = path.join(process.cwd(), '.venv', 'bin', 'python');
+      } else if (fs.existsSync(path.join(process.cwd(), '.venv', 'Scripts', 'python.exe'))) {
+        pythonPath = path.join(process.cwd(), '.venv', 'Scripts', 'python.exe');
+      } else {
+        pythonPath = 'python3'; // Fallback to system Python
+      }
         
       // Check if Python path exists and log for debugging
       console.log(`Python path: ${pythonPath}`);
@@ -204,6 +217,7 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
       console.log(`Azure OpenAI API Key: ${azureOpenAIKey ? 'set' : 'not set'}`);
       console.log(`Azure OpenAI Endpoint: ${azureOpenAIEndpoint || 'not set'}`);
       console.log(`Azure OpenAI API Version: ${azureOpenAIVersion || 'not set'}`);
+      console.log(`Environment variables available:`, Object.keys(process.env).filter(key => key.includes('AZURE') || key.includes('OPENAI')));
       
       // Make sure we have Azure OpenAI credentials
       if (!azureOpenAIKey || !azureOpenAIEndpoint) {
@@ -218,7 +232,7 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
         videoTitle,
         summaryFile,
         '--difficulty', difficulty,
-        '--num-questions', numQuestions.toString(),
+        '--content-density', config.contentDensity,
         '--include-explanations', config.includeExplanations ? 'true' : 'false'
       ];
       
@@ -231,6 +245,11 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
         AZURE_OPENAI_ENDPOINT: azureOpenAIEndpoint,
         AZURE_OPENAI_API_VERSION: azureOpenAIVersion || '2023-12-01-preview'
       };
+      
+      console.log('Environment variables for Python process:');
+      console.log(`  AZURE_OPENAI_API_KEY: ${azureOpenAIKey ? 'set' : 'not set'}`);
+      console.log(`  AZURE_OPENAI_ENDPOINT: ${azureOpenAIEndpoint || 'not set'}`);
+      console.log(`  AZURE_OPENAI_API_VERSION: ${azureOpenAIVersion || '2023-12-01-preview'}`);
       
       // Timeout for the process (60 seconds)
       const timeoutMs = 60000;
@@ -251,6 +270,7 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
       // Collect output
       py.stdout.on('data', (data) => {
         output += data.toString();
+        console.log(`Python quiz generator stdout: ${data}`);
       });
       
       // Collect errors
@@ -259,9 +279,16 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
         console.error(`Python quiz generator stderr: ${data}`);
       });
       
+      // Log process start
+      console.log(`Python process started with PID: ${py.pid}`);
+      
       // Handle process completion
       py.on('close', (code) => {
         clearTimeout(timeoutId);
+        
+        console.log(`Python process completed with code: ${code}`);
+        console.log(`Output length: ${output.length}`);
+        console.log(`Error length: ${error.length}`);
         
         // Clean up temporary file
         try {
@@ -279,47 +306,88 @@ async function generateAIQuestions(transcript, summary, videoId, config) {
         
         try {
           // Parse the output as JSON - handle debug output mixed with JSON
-          let jsonStart = output.indexOf('{');
-          let jsonEnd = output.lastIndexOf('}');
+          console.log('Raw Python output length:', output.length);
+          console.log('Raw Python output preview:', output.substring(0, 500));
           
-          if (jsonStart >= 0 && jsonEnd >= 0) {
-            const jsonString = output.substring(jsonStart, jsonEnd + 1);
-            const result = JSON.parse(jsonString);
-            
-            // Handle both nested format {"questions": [...]} and flat array [...]
-            let questions;
-            if (result.questions && Array.isArray(result.questions)) {
-              questions = result.questions;
-            } else if (Array.isArray(result)) {
-              questions = result;
-            } else {
-              return reject(new Error('Invalid quiz generation output format'));
+          // Try multiple strategies to extract JSON
+          let jsonString = null;
+          
+          // Strategy 1: Look for JSON after "GENERATED QUIZ" section
+          const quizSection = output.split('GENERATED QUIZ');
+          if (quizSection.length > 1) {
+            const afterQuiz = quizSection[1];
+            const jsonMatch1 = afterQuiz.match(/\{[\s\S]*\}/);
+            if (jsonMatch1) {
+              jsonString = jsonMatch1[0];
+              console.log('Strategy 1: Found JSON after GENERATED QUIZ with length:', jsonString.length);
+              console.log('Strategy 1: JSON preview:', jsonString.substring(0, 200));
             }
-            
-            if (questions.length === 0) {
-              return reject(new Error('No questions generated'));
+          }
+          
+          // Strategy 2: Look for JSON between curly braces (fallback)
+          if (!jsonString) {
+            const jsonMatch2 = output.match(/\{[\s\S]*\}/);
+            if (jsonMatch2) {
+              jsonString = jsonMatch2[0];
+              console.log('Strategy 2: Found JSON with length:', jsonString.length);
             }
-
-            // Ensure each question has a unique ID
-            questions.forEach((q, index) => {
-              if (!q.id) {
-                q.id = `ai-q-${index + 1}`;
-              }
-            });
-            
-            // Assign timestamps to the AI-generated questions using the full transcript
-            const questionsWithTimestamps = assignTimestampsToQuestions(questions, transcriptSegments);
-            
-            console.log(`Successfully generated ${questionsWithTimestamps.length} AI questions with timestamps`);
-            resolve(questionsWithTimestamps);
-          } else {
+          }
+          
+          // Strategy 3: Look for the last JSON object in the output
+          if (!jsonString) {
+            const jsonMatches = output.match(/\{[\s\S]*?\}/g);
+            if (jsonMatches && jsonMatches.length > 0) {
+              jsonString = jsonMatches[jsonMatches.length - 1];
+              console.log('Strategy 3: Found last JSON with length:', jsonString.length);
+            }
+          }
+          
+          if (!jsonString) {
+            console.error('No JSON found in output');
+            console.error('Output preview:', output.substring(0, 1000));
+            console.error('Full output:', output);
             return reject(new Error('No JSON found in AI output'));
           }
+          
+          console.log('JSON string preview:', jsonString.substring(0, 300));
+          
+          const result = JSON.parse(jsonString);
+          
+          // Handle both nested format {"questions": [...]} and flat array [...]
+          let questions;
+          if (result.questions && Array.isArray(result.questions)) {
+            questions = result.questions;
+          } else if (Array.isArray(result)) {
+            questions = result;
+          } else {
+            console.error('Invalid result format:', result);
+            return reject(new Error('Invalid quiz generation output format'));
+          }
+          
+          if (questions.length === 0) {
+            return reject(new Error('No questions generated'));
+          }
+
+          // Ensure each question has a unique ID
+          questions.forEach((q, index) => {
+            if (!q.id) {
+              q.id = `ai-q-${index + 1}`;
+            }
+          });
+          
+          // Assign timestamps to the AI-generated questions using the full transcript
+          const questionsWithTimestamps = assignTimestampsToQuestions(questions, transcriptSegments);
+          
+          console.log(`Successfully generated ${questionsWithTimestamps.length} AI questions with timestamps`);
+          resolve(questionsWithTimestamps);
           
         } catch (parseError) {
           console.error('Failed to parse quiz generation output:', parseError);
           console.error('Raw output:', output);
-          return reject(new Error('Failed to parse quiz generation output'));
+          console.error('Parse error details:', parseError.message);
+          
+          // Return the raw output for debugging
+          return reject(new Error(`Failed to parse quiz generation output: ${parseError.message}. Raw output: ${output.substring(0, 500)}`));
         }
       });
       
@@ -344,7 +412,6 @@ function generateQuestionsFromTranscript(transcript, videoId, config = {}) {
   try {
     // Get configuration values with defaults
     const difficulty = config.difficulty || 'medium';
-    const desiredQuestionCount = config.questionCount || 5;
     const includeExplanations = config.includeExplanations !== false;
     
     // Parse transcript into segments if it's provided as a string
@@ -387,7 +454,7 @@ function generateQuestionsFromTranscript(transcript, videoId, config = {}) {
     
     // Adjust number of questions based on video duration
     const numQuestions = Math.min(
-      desiredQuestionCount, 
+              5, // Default question count for algorithmic generation 
       Math.max(3, Math.floor(totalDuration / 120)) // One question every 2 minutes
     );
     
@@ -521,7 +588,14 @@ function assignTimestampsToQuestions(questions, transcript, totalDuration = null
     console.log(`🎯 QUIZ: Using actual video duration: ${totalDuration}s (${Math.floor(totalDuration/60)}:${String(Math.floor(totalDuration%60)).padStart(2, '0')})`);
   } else {
     // Estimate duration from transcript
-    const totalWords = transcript.reduce((sum, segment) => sum + segment.text.split(' ').length, 0);
+    let totalWords = 0;
+    if (Array.isArray(transcript)) {
+      totalWords = transcript.reduce((sum, segment) => sum + (segment.text || '').split(' ').length, 0);
+    } else if (typeof transcript === 'string') {
+      totalWords = transcript.split(' ').length;
+    } else {
+      totalWords = 100; // Default fallback
+    }
     const estimatedDuration = Math.max(totalWords * 0.6, 600); // At least 10 minutes
     totalDurationForAssignment = estimatedDuration;
     console.log(`🎯 QUIZ: Using estimated duration: ${estimatedDuration}s`);
@@ -774,7 +848,7 @@ function createQuestionByType(type, keywords, timestamp, id, includeExplanations
 function generateBasicQuestions(transcript, videoId, config = {}) {
   // Get configuration values with defaults
   const difficulty = config.difficulty || 'medium';
-  const desiredQuestionCount = config.questionCount || 5;
+      const desiredQuestionCount = 5; // Default for algorithmic generation
   const includeExplanations = config.includeExplanations !== false;
   
   // Basic algorithm to extract keywords and create questions
@@ -811,7 +885,7 @@ function generateBasicQuestions(transcript, videoId, config = {}) {
   const topWords = sortedWords.slice(0, 20);
   
   // Determine number of questions based on difficulty and config
-  let numQuestions = Math.min(desiredQuestionCount, 5);
+      let numQuestions = 5; // Default for algorithmic generation
   
   // Determine timestamps for questions - try to space them evenly
   const estimatedDuration = typeof transcript === 'string' ? 

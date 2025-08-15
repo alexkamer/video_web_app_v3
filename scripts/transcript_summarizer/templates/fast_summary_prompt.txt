@@ -6,6 +6,7 @@
 - **Video Title**: "{video_title}"
 - **Transcript Length**: {transcript_length} characters
 - **Target Length**: {target_length} words (adapts to video length)
+- **Vocabulary Difficulty**: {difficulty}
 
 **Instructions**:
 
@@ -30,6 +31,9 @@
    - For medium videos (5-15 minutes): 100-200 words  
    - For long videos (> 15 minutes): 200-300 words
    - Never exceed the target length
+
+5. **Vocabulary**:
+   - Adjust the vocabulary of the summary to a **{difficulty}** level.
 
 **Transcript**:
 ```

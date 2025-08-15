@@ -1,4 +1,3 @@
-import comprehensiveSummaryCache from '../../../utils/comprehensiveSummaryCache';
 import rateLimiter from '../../../utils/rateLimiter';
 const { spawn } = require('child_process');
 
@@ -37,8 +36,8 @@ export default async function handler(req, res) {
       });
     }
 
-    // Check if we have cached comprehensive summaries
-    const cachedSummaries = comprehensiveSummaryCache.getComprehensiveSummaries(videoId);
+    // For now, we'll just return that no summaries are available
+    const cachedSummaries = null;
     
     if (action === 'get_available') {
       // Return currently available summaries
@@ -86,18 +85,11 @@ export default async function handler(req, res) {
         });
       }
       
-      if (cachedSummaries) {
-        const summary = comprehensiveSummaryCache.getSummaryVariant(videoId, difficulty, length);
-        if (summary) {
-          return res.status(200).json({
-            success: true,
-            summary,
-            difficulty,
-            length,
-            source: 'cache'
-          });
-        }
-      }
+      // Summary variant not available
+      return res.status(404).json({
+        success: false,
+        message: 'Requested variant not available yet'
+      });
       
       return res.status(404).json({
         success: false,
@@ -157,8 +149,8 @@ async function generateSummariesInBackground(videoId, transcript, videoTitle) {
     const tmpFile = tmp.fileSync({ postfix: '.txt' });
     fs.writeFileSync(tmpFile.name, transcriptText, 'utf-8');
 
-    // Use the comprehensive summarization script
-    const scriptPath = path.join(process.cwd(), 'scripts', 'comprehensive_summarize_transcript.py');
+    // Use the incremental summarization script
+    const scriptPath = path.join(process.cwd(), 'scripts', 'incremental_summarize_transcript.py');
     
     // Use the virtual environment Python interpreter
     const pythonPath = process.env.VIRTUAL_ENV 
@@ -176,7 +168,8 @@ async function generateSummariesInBackground(videoId, transcript, videoTitle) {
       const py = spawn(pythonPath, [
         scriptPath, 
         tmpFile.name,  // transcript_file
-        videoTitle || 'Untitled Video'  // video_title
+        videoTitle || 'Untitled Video',  // video_title
+        videoId  // video_id
       ]);
       
       let output = '';
@@ -235,8 +228,8 @@ async function generateSummariesInBackground(videoId, transcript, videoTitle) {
       console.error('[Incremental Summary] Error removing temp file:', e);
     }
     
-    // Cache the comprehensive summaries
-    comprehensiveSummaryCache.setComprehensiveSummaries(videoId, allSummaries);
+    // Cache functionality removed - summaries are not cached
+    console.log('Summary generation completed but not cached');
     
     console.log(`[Incremental Summary] Background generation completed for video: ${videoId}`);
     

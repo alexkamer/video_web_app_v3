@@ -26,13 +26,130 @@ tutorial:
   emoji: "📚"
   keywords: ["tutorial", "how-to", "how to", "step-by-step", "guide", "walkthrough", "instruction", "demonstration", "how do i", "steps to", "beginner's guide", "DIY", "follow along", "create", "build", "implement", "setup", "install", "configure"]
 
+technical_developer:
+  intro: "This technical deep-dive explores {title_topic} with code examples and implementation details."
+  structure:
+    - "⚙️ **Technical Overview:**"
+    - "💻 **Code Examples & Implementation:**"
+    - "🔧 **Key Features & Capabilities:**"
+    - "🚀 **Best Practices & Tips:**"
+    - "🛠️ **Setup & Configuration:**"
+    - "📊 **Performance & Optimization:**"
+  tone: "technical and precise"
+  emoji: "💻"
+  keywords: ["programming", "coding", "developer", "software", "code", "technical", "implementation", "API", "framework", "library", "algorithm", "data structure", "debugging", "optimization", "architecture", "backend", "frontend", "full-stack", "web development", "mobile development", "database", "cloud", "devops"]
+
+gaming:
+  intro: "This gaming content delivers an exciting experience with {title_topic}, featuring gameplay highlights and strategies."
+  structure:
+    - "🎮 **Game Overview & Setup:**"
+    - "⚡ **Epic Moments & Highlights:**"
+    - "🏆 **Strategies & Tips:**"
+    - "🎯 **Key Gameplay Elements:**"
+    - "🔥 **Memorable Clips:**"
+    - "🏁 **Final Thoughts & Rating:**"
+  tone: "energetic and entertaining"
+  emoji: "🎮"
+  keywords: ["gaming", "gameplay", "walkthrough", "let's play", "game review", "esports", "stream", "gaming", "playthrough", "game", "video game", "gamer", "streaming", "twitch", "youtube gaming", "gameplay", "highlights", "clips", "moments", "epic", "awesome", "amazing"]
+
+sports_highlights:
+  intro: "This sports content captures the thrilling action of {title_topic} with dramatic highlights and key moments."
+  structure:
+    - "🏟️ **Game Context & Teams:**"
+    - "⚡ **Key Plays & Highlights:**"
+    - "📊 **Statistics & Records:**"
+    - "🎯 **Turning Points:**"
+    - "🏆 **Final Outcome:**"
+    - "🔥 **Memorable Moments:**"
+  tone: "exciting and dramatic"
+  emoji: "⚽"
+  keywords: ["sports", "highlights", "game", "match", "play", "team", "player", "score", "goal", "touchdown", "basket", "point", "win", "loss", "victory", "defeat", "championship", "tournament", "league", "season", "playoff", "final", "semifinal", "quarterfinal"]
+
+music_performance:
+  intro: "This musical performance showcases {title_topic} with artistic expression and technical skill."
+  structure:
+    - "🎵 **Musical Style & Genre:**"
+    - "🎤 **Performance Highlights:**"
+    - "🎼 **Technical Elements:**"
+    - "💫 **Artistic Expression:**"
+    - "🎭 **Stage Presence & Energy:**"
+    - "👏 **Audience Reaction:**"
+  tone: "artistic and expressive"
+  emoji: "🎵"
+  keywords: ["music", "song", "performance", "concert", "live", "cover", "original", "band", "singer", "musician", "instrument", "guitar", "piano", "drums", "bass", "vocals", "melody", "rhythm", "harmony", "lyrics", "composition", "arrangement", "recording", "studio"]
+
+movie_trailer:
+  intro: "This cinematic preview teases {title_topic} with stunning visuals and compelling storytelling."
+  structure:
+    - "🎬 **Film Overview & Genre:**"
+    - "🌟 **Cast & Characters:**"
+    - "🎭 **Plot Teasers & Story Elements:**"
+    - "🎨 **Visual Style & Cinematography:**"
+    - "🎵 **Music & Sound Design:**"
+    - "🎯 **Release Information:**"
+  tone: "cinematic and dramatic"
+  emoji: "🎬"
+  keywords: ["movie", "film", "trailer", "cinema", "theater", "release", "premiere", "cast", "director", "actor", "actress", "character", "plot", "story", "scene", "shot", "cinematography", "visual effects", "soundtrack", "score", "box office", "review", "rating"]
+
+documentary:
+  intro: "This documentary presents an in-depth exploration of {title_topic}, revealing important insights and perspectives."
+  structure:
+    - "🔍 **Central Theme & Focus:**"
+    - "📚 **Historical Context & Background:**"
+    - "👥 **Key Perspectives & Interviews:**"
+    - "🧩 **Important Revelations & Discoveries:**"
+    - "💭 **Impact & Significance:**"
+    - "🎯 **Concluding Thoughts:**"
+  tone: "investigative and informative"
+  emoji: "🎬"
+  keywords: ["documentary", "investigation", "explore", "examine", "inside", "story", "history", "feature", "in-depth", "series", "presentation", "investigation", "behind the scenes", "untold story", "real story", "true story", "deep dive", "expose", "revealing"]
+
+business_finance:
+  intro: "This business content provides valuable insights into {title_topic} with practical strategies and analysis."
+  structure:
+    - "💼 **Business Context & Market:**"
+    - "📈 **Key Insights & Analysis:**"
+    - "💰 **Financial Implications:**"
+    - "🚀 **Strategies & Opportunities:**"
+    - "⚠️ **Risks & Considerations:**"
+    - "🎯 **Actionable Takeaways:**"
+  tone: "professional and analytical"
+  emoji: "💼"
+  keywords: ["business", "finance", "investment", "entrepreneur", "startup", "company", "market", "stock", "trading", "economy", "profit", "revenue", "growth", "strategy", "management", "leadership", "success", "failure", "opportunity", "risk", "analysis", "forecast", "trend"]
+
+comedy_entertainment:
+  intro: "This comedy content delivers laughs with {title_topic}, featuring humor and entertainment throughout."
+  structure:
+    - "😂 **Funniest Moments:**"
+    - "🎭 **Comedy Style & Delivery:**"
+    - "🎪 **Entertainment Elements:**"
+    - "💫 **Creative Humor:**"
+    - "👏 **Audience Reactions:**"
+    - "🎯 **Overall Entertainment Value:**"
+  tone: "humorous and entertaining"
+  emoji: "😂"
+  keywords: ["comedy", "funny", "humor", "joke", "laugh", "entertainment", "skit", "stand-up", "comedy", "fun", "amusing", "hilarious", "witty", "sarcastic", "satire", "parody", "sketch", "comedy show", "comedy club", "jokes", "punchline", "comedian"]
+
+motivational_selfhelp:
+  intro: "This motivational content inspires with {title_topic}, offering encouragement and personal development insights."
+  structure:
+    - "💪 **Core Message & Inspiration:**"
+    - "🌟 **Key Motivational Points:**"
+    - "🎯 **Personal Development Insights:**"
+    - "🚀 **Action Steps & Strategies:**"
+    - "💡 **Life Lessons & Wisdom:**"
+    - "✨ **Encouragement & Hope:**"
+  tone: "inspirational and encouraging"
+  emoji: "💪"
+  keywords: ["motivational", "inspiration", "self-help", "personal development", "motivation", "encouragement", "inspire", "empower", "success", "mindset", "positive", "growth", "transformation", "change", "improvement", "goals", "dreams", "aspirations", "purpose", "meaning", "fulfillment", "happiness"]
+
 podcast:
   intro: "In this engaging conversation about {title_topic}, the speakers explore various perspectives and insights."
   structure:
     - "🎙️ **Conversation Highlights:**"
-    - "💬 **Key Quotes:**"
+    - "💬 **Key Quotes & Moments:**"
     - "🔍 **Main Discussion Points:**"
-    - "💡 **Unique Insights:**"
+    - "💡 **Unique Insights & Perspectives:**"
     - "📌 **Resources & Recommendations:**"
   tone: "conversational and exploratory"
   emoji: "🎙️"
@@ -86,18 +203,6 @@ news:
   emoji: "📰"
   keywords: ["news", "commentary", "report", "breaking", "update", "latest", "headlines", "current events", "coverage", "story", "press", "bulletin", "broadcast", "reporter", "journalism", "world news", "report", "investigation", "media"]
 
-documentary:
-  intro: "This documentary presents an in-depth exploration of {title_topic}, revealing important insights and perspectives."
-  structure:
-    - "🔍 **Central Theme:**"
-    - "📚 **Historical Context:**"
-    - "👥 **Key Perspectives:**"
-    - "🧩 **Important Revelations:**"
-    - "💭 **Concluding Thoughts:**"
-  tone: "investigative and informative"
-  emoji: "🎬"
-  keywords: ["documentary", "investigation", "explore", "examine", "inside", "story", "history", "feature", "in-depth", "series", "presentation", "investigation", "behind the scenes", "untold story", "real story", "true story", "deep dive", "expose", "revealing"]
-
 review:
   intro: "This review provides a critical assessment of {title_topic}, evaluating its strengths and weaknesses."
   structure:
@@ -109,102 +214,6 @@ review:
   tone: "analytical and evaluative"
   emoji: "⭐"
   keywords: ["review", "analysis", "critique", "evaluation", "rating", "honest review", "honest opinion", "pros and cons", "should you buy", "worth it", "not worth it", "recommendation", "verdict", "thoughts on", "product review", "testing", "hands-on", "first look", "unboxing", "impressions"]
-
-gaming:
-  intro: "This gaming video showcases {title_topic} with gameplay footage and commentary."
-  structure:
-    - "🎮 **Game & Setting:**"
-    - "🕹️ **Gameplay Highlights:**"
-    - "💪 **Strategies & Techniques:**"
-    - "🏆 **Achievements & Outcomes:**"
-    - "💬 **Player Commentary:**"
-  tone: "engaging and enthusiastic"
-  emoji: "🎮"
-  keywords: ["gaming", "gameplay", "game", "playthrough", "let's play", "walkthrough", "stream", "speedrun", "gaming channel", "esports", "twitch", "gamer", "Nintendo", "PlayStation", "Xbox", "PC gaming", "mobile gaming", "multiplayer", "battle", "strategy game", "RPG", "FPS"]
-
-sports:
-  intro: "This sports video covers {title_topic}, highlighting key plays and athletic performances."
-  structure:
-    - "🏆 **Event Context:**"
-    - "⚽ **Key Plays & Moments:**"
-    - "🌟 **Standout Performances:**"
-    - "📊 **Statistics & Analysis:**"
-    - "🔮 **Implications & Next Steps:**"
-  tone: "energetic and analytical"
-  emoji: "🏅"
-  keywords: ["sports", "highlight", "athletic", "game", "match", "tournament", "championship", "league", "team", "player", "football", "basketball", "soccer", "baseball", "tennis", "golf", "hockey", "wrestling", "boxing", "UFC", "MMA", "fitness", "competition", "workout", "sport"]
-
-movie_recap:
-  intro: "This recap summarizes and analyzes {title_topic}, covering the plot and key elements."
-  structure:
-    - "🎬 **Plot Overview:**"
-    - "👥 **Character Analysis:**"
-    - "🌟 **Key Scenes & Moments:**"
-    - "🔍 **Hidden Details & Easter Eggs:**"
-    - "💭 **Themes & Interpretations:**"
-  tone: "narrative and analytical"
-  emoji: "🍿"
-  keywords: ["movie", "recap", "film", "show", "series", "episode", "breakdown", "analysis", "ending explained", "review", "TV show", "season", "finale", "explained", "plot", "summary", "movies", "cinema", "scene", "character", "explained", "theory"]
-
-music:
-  intro: "This video showcases musical performances and content related to {title_topic}."
-  structure:
-    - "🎵 **Musical Context:**"
-    - "🎤 **Performance Highlights:**"
-    - "🌟 **Standout Elements:**"
-    - "🎧 **Audio Quality & Production:**"
-    - "💫 **Overall Impression:**"
-  tone: "appreciative and descriptive"
-  emoji: "🎵"
-  keywords: ["music", "performance", "concert", "song", "album", "artist", "band", "singer", "musician", "vocal", "live", "cover", "track", "remix", "official video", "music video", "lyrics", "acoustic", "studio", "recording", "instrumental"]
-
-cooking:
-  intro: "This cooking video demonstrates how to prepare {title_topic}, with step-by-step instructions and techniques."
-  structure:
-    - "🍳 **Recipe Overview:**"
-    - "📋 **Ingredients & Preparation:**"
-    - "👨‍🍳 **Cooking Techniques:**"
-    - "💡 **Tips & Variations:**"
-    - "🍽️ **Final Presentation:**"
-  tone: "instructional and enthusiastic"
-  emoji: "🍲"
-  keywords: ["cooking", "recipe", "food", "baking", "chef", "kitchen", "meal", "dish", "cuisine", "cook", "prepare", "homemade", "delicious", "tasty", "flavor", "ingredients", "dinner", "breakfast", "lunch", "dessert", "healthy eating", "culinary"]
-
-motivational:
-  intro: "This inspirational video provides motivation and guidance on {title_topic}, offering perspectives for personal growth."
-  structure:
-    - "💫 **Core Message:**"
-    - "💡 **Key Insights:**"
-    - "🚀 **Actionable Advice:**"
-    - "🌈 **Inspirational Elements:**"
-    - "💭 **Final Thoughts:**"
-  tone: "uplifting and encouraging"
-  emoji: "✨"
-  keywords: ["motivational", "self-help", "inspiration", "inspire", "motivation", "success", "mindset", "goals", "achievement", "personal development", "growth", "self-improvement", "life lessons", "advice", "tips for success", "transformation", "change your life", "purpose", "positive", "happiness"]
-
-technical:
-  intro: "This technical video explains {title_topic} in detail, covering implementation and best practices."
-  structure:
-    - "🔧 **Technical Overview:**"
-    - "📋 **Core Components & Concepts:**"
-    - "💻 **Implementation Details:**"
-    - "⚠️ **Challenges & Solutions:**"
-    - "📈 **Optimizations & Best Practices:**"
-  tone: "technical and precise"
-  emoji: "💻"
-  keywords: ["technical", "developer", "programming", "coding", "code", "software", "development", "engineering", "technology", "framework", "language", "algorithm", "system", "application", "computer science", "dev", "API", "database", "architecture", "solution", "IT"]
-
-business:
-  intro: "This business-focused video explores {title_topic}, providing insights for professional and financial contexts."
-  structure:
-    - "📊 **Market Context:**"
-    - "💼 **Business Strategies:**"
-    - "📈 **Growth & Opportunities:**"
-    - "🧠 **Expert Perspectives:**"
-    - "💰 **Financial Implications:**"
-  tone: "professional and analytical"
-  emoji: "💼"
-  keywords: ["business", "finance", "investment", "entrepreneur", "startup", "company", "marketing", "strategy", "leadership", "management", "economics", "industry", "market", "corporate", "commercial", "trade", "enterprise", "economy", "sales", "stock market", "financial", "money"]
 
 health:
   intro: "This health and fitness video addresses {title_topic}, offering guidance for physical wellbeing."

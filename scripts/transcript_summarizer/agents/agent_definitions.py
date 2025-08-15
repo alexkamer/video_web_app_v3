@@ -102,11 +102,19 @@ def create_agents():
         description="An agent that detects video genre and content type"
     )
     
+    # Create a summary prettifier agent
+    prettifier_agent = Agent(
+        name="SummaryPrettifier",
+        model=llm,
+        description="An agent that enhances the visual formatting and readability of summaries"
+    )
+    
     return {
         "correction_agent": correction_agent,
         "comprehensive_agent": comprehensive_agent,
         "chunk_agent": chunk_agent,
         "genre_detection_agent": genre_detection_agent,
+        "prettifier_agent": prettifier_agent,
         "llm": llm,
         "reasoning_llm": reasoning_llm
     }

@@ -61,13 +61,14 @@ def load_fast_summary_prompt() -> str:
 Transcript:
 {transcript_text}"""
 
-def generate_fast_summary(transcript_text: str, video_title: str, debug_output: bool = False) -> str:
+def generate_fast_summary(transcript_text: str, video_title: str, debug_output: bool = False, difficulty: str = "Normal") -> str:
     """Generate a fast, concise summary of the transcript
     
     Args:
         transcript_text (str): The transcript text to summarize
         video_title (str): Title of the video
         debug_output (bool): Whether to print debug information
+        difficulty (str): The desired vocabulary difficulty of the summary
         
     Returns:
         str: The generated summary
@@ -94,6 +95,7 @@ def generate_fast_summary(transcript_text: str, video_title: str, debug_output: 
             print(f"Fast Summary: Transcript length: {transcript_length} chars")
             print(f"Fast Summary: Estimated duration: {estimated_duration} minutes")
             print(f"Fast Summary: Target length: {target_length} words")
+            print(f"Fast Summary: Difficulty: {difficulty}")
         
         # Load and format the prompt
         prompt_template = load_fast_summary_prompt()
@@ -101,7 +103,8 @@ def generate_fast_summary(transcript_text: str, video_title: str, debug_output: 
             video_title=video_title,
             transcript_length=transcript_length,
             target_length=target_length,
-            transcript_text=transcript_text
+            transcript_text=transcript_text,
+            difficulty=difficulty
         )
         
         # Truncate transcript if it's too long for the API
@@ -124,7 +127,7 @@ def generate_fast_summary(transcript_text: str, video_title: str, debug_output: 
         response = client.chat.completions.create(
             model=os.getenv('AZURE_OPENAI_DEPLOYMENT', 'gpt-4-1'),
             messages=[
-                {"role": "system", "content": "You are a concise content summarizer. Provide direct, factual summaries without filler words."},
+                {"role": "system", "content": f"You are a concise content summarizer. Provide direct, factual summaries without filler words. The user has requested a summary with a {difficulty} vocabulary level."}, 
                 {"role": "user", "content": formatted_prompt}
             ],
             temperature=0.3,  # Lower temperature for more consistent, factual output
@@ -157,17 +160,18 @@ def generate_fast_summary(transcript_text: str, video_title: str, debug_output: 
             
         return f"Summary unavailable. Here's the beginning of the transcript:\n\n{basic_summary}"
 
-def generate_fast_summary_async(transcript_text: str, video_title: str, debug_output: bool = False) -> str:
+def generate_fast_summary_async(transcript_text: str, video_title: str, debug_output: bool = False, difficulty: str = "Normal") -> str:
     """Async wrapper for generate_fast_summary (for compatibility)
     
     Args:
         transcript_text (str): The transcript text to summarize
         video_title (str): Title of the video
         debug_output (bool): Whether to print debug information
+        difficulty (str): The desired vocabulary difficulty of the summary
         
     Returns:
         str: The generated summary
     """
     # For now, just call the sync version
     # In the future, this could be made truly async
-    return generate_fast_summary(transcript_text, video_title, debug_output)
+    return generate_fast_summary(transcript_text, video_title, debug_output, difficulty)

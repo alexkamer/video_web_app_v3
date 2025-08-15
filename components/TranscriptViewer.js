@@ -1020,33 +1020,35 @@ export default function TranscriptViewer({ videoId, onTranscriptLoaded, onSegmen
   // Render transcript content
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <h2>{sections && sections.length > 0 ? 'Chapters' : 'Transcript'}</h2>
-          {sectionsSource && (
-            <span className={`${styles.sectionsBadge} ${sectionsSource === 'youtube' ? styles.youtube : styles.ai}`}>
-              {sectionsSource === 'youtube' ? 'YouTube Chapters' : 'AI Sections'}
-            </span>
-          )}
+              <div className={styles.header}>
+          <div className={styles.headerLeft}>
+            <h2>
+              {sections && sections.length > 0 ? 'Chapters' : 'Transcript'}
+            </h2>
+            {sectionsSource && (
+              <span className={`${styles.sectionsBadge} ${sectionsSource === 'youtube' ? styles.youtube : styles.ai}`}>
+                {sectionsSource === 'youtube' ? 'YouTube Chapters' : 'AI Sections'}
+              </span>
+            )}
 
-          {fixedTranscript && !sections && (
-            <span 
-              className={`${styles.transcriptBadge} ${isFixed ? styles.fixed : styles.original}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleFixed();
-              }}
-            >
-              {isFixed ? 'AI-Fixed' : 'Original'}
-            </span>
+            {fixedTranscript && !sections && (
+              <span 
+                className={`${styles.transcriptBadge} ${isFixed ? styles.fixed : styles.original}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleFixed();
+                }}
+              >
+                {isFixed ? 'AI-Fixed' : 'Original'}
+              </span>
+            )}
+          </div>
+          {sectionsLoading && (
+            <div className={styles.sectionsLoading}>
+              Loading sections...
+            </div>
           )}
         </div>
-        {sectionsLoading && (
-          <div className={styles.sectionsLoading}>
-            Loading sections...
-          </div>
-        )}
-      </div>
       <div 
         ref={transcriptContentRef}
         className={styles.transcriptContent}
@@ -1064,7 +1066,7 @@ export default function TranscriptViewer({ videoId, onTranscriptLoaded, onSegmen
         }}
       >
         {sections && sections.length > 0 ? (
-          // Display chapters
+          // Display enhanced chapters
           chaptersDisplay.map((chapter, index) => (
             <div key={chapter.id} className={styles.chapterContainer}>
               <button
@@ -1094,7 +1096,7 @@ export default function TranscriptViewer({ videoId, onTranscriptLoaded, onSegmen
                 disabled={previewsLoading}
               >
                 <span className={styles.previewArrow}>
-                  {previewsLoading ? '⏳' : (expandedChapters.includes(chapter.id) ? '▼' : '▶')}
+                  {previewsLoading ? '...' : (expandedChapters.includes(chapter.id) ? '▼' : '▶')}
                 </span>
               </button>
               {expandedChapters.includes(chapter.id) && (

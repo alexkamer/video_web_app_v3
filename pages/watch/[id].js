@@ -363,16 +363,28 @@ export default function WatchPage() {
                     isActive={mode === 'quiz'}
                     config={{
                       difficulty: 'medium',
-                      questionCount: 5,
+                      contentDensity: 'medium',
                       includeExplanations: true
                     }}
                     playerRef={playerRef}
                     onQuizComplete={(result) => {
                       console.log('Quiz completed with score:', result.score);
                     }}
-                    onPauseVideo={() => playerRef.current && playerRef.current.pause()}
-                    onResumeVideo={() => playerRef.current && playerRef.current.play()}
-                    onSeek={(timestamp) => playerRef.current && playerRef.current.seekTo(timestamp)}
+                    onPauseVideo={() => {
+                      if (playerRef.current && typeof playerRef.current.pause === 'function') {
+                        playerRef.current.pause();
+                      }
+                    }}
+                    onResumeVideo={() => {
+                      if (playerRef.current && typeof playerRef.current.play === 'function') {
+                        playerRef.current.play();
+                      }
+                    }}
+                    onSeek={(timestamp) => {
+                      if (playerRef.current && typeof playerRef.current.seekTo === 'function') {
+                        playerRef.current.seekTo(timestamp);
+                      }
+                    }}
                   />
                 )}
               </div>

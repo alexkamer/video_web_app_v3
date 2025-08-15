@@ -340,6 +340,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
+  min-width: 80px;
+  max-width: 120px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .configOption:hover {
@@ -350,6 +355,27 @@
   background-color: #0070f3;
   color: white;
   border-color: #0055b3;
+}
+
+.optionLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.optionDescription {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+}
+
+.configOption.selected .optionDescription {
+  opacity: 0.9;
 }
 
 /* Feedback Panel Styles */
@@ -431,5 +457,59 @@
   .configOption {
     padding: 6px 12px;
     font-size: 0.9rem;
+  }
+  
+  .questionIndicator {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Question Indicator Styles */
+.questionIndicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.indicatorContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.indicatorIcon {
+  font-size: 1.2rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
   }
 }

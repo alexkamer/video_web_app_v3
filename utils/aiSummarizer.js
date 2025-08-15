@@ -16,6 +16,7 @@ const path = require('path');
  * @param {string} videoTitle - The title of the video
  * @param {Object} options - Options for summary generation
  * @param {boolean} options.usePython - Whether to use the Python agent (slower but better quality)
+ * @param {string} options.difficulty - The desired vocabulary difficulty of the summary
  * @returns {Promise<string>} - Generated summary
  */
 async function summarizeTranscript(transcript, videoTitle, options = {}) {
@@ -67,6 +68,11 @@ async function summarizeTranscript(transcript, videoTitle, options = {}) {
     // Add detailed flag if requested
     if (options.useDetailed) {
       args.push('--detailed');
+    }
+
+    // Add difficulty flag if requested
+    if (options.difficulty) {
+      args.push('--difficulty', options.difficulty);
     }
     
     // Use the virtual environment Python interpreter
@@ -258,7 +264,7 @@ function generateBasicSummary(text, title) {
   let summary = '';
   
   // Add introduction
-  summary += `${contentEmoji} This video appears to be a ${contentType} about ${titleWords.join(' ')}. `;
+  summary += `${contentEmoji} This video appears to be a ${contentType} about ${titleWords.join(' ')}. `; 
   
   // Add content insight based on keywords and phrases
   if (keyphrases.length > 0) {
@@ -269,7 +275,7 @@ function generateBasicSummary(text, title) {
       summary += '.'; 
     }
   } else {
-    summary += `The content primarily discusses topics related to ${topKeywords.slice(0, 3).join(', ')}`;  
+    summary += `The content primarily discusses topics related to ${topKeywords.slice(0, 3).join(', ')}`;
     if (topKeywords.length > 3) {
       summary += `, with additional focus on ${topKeywords.slice(3, 6).join(', ')}.`;
     } else {

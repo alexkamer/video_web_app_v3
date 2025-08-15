@@ -38,6 +38,7 @@ def main():
     parser.add_argument("--use-async", action="store_true", help="Use async execution for better performance")
     parser.add_argument("--fast", action="store_true", help="Use fast summarization (default)")
     parser.add_argument("--detailed", action="store_true", help="Use detailed summarization with chunking")
+    parser.add_argument("--difficulty", default="Normal", help="Vocabulary difficulty of the summary (Beginner, Normal, Advanced, Professional)")
     
     args = parser.parse_args()
     
@@ -58,21 +59,22 @@ def main():
     
     print(f"Processing transcript for video: {args.video_title}")
     print(f"Transcript length: {len(transcript_text)} characters")
+    print(f"Difficulty: {args.difficulty}")
     
     # Choose summarization method
     if args.detailed:
         print("Using detailed summarization with chunking...")
         if args.use_async:
-            summary = asyncio.run(summarize_transcript_async(transcript_text, args.video_title, debug_output=False))
+            summary = asyncio.run(summarize_transcript_async(transcript_text, args.video_title, debug_output=False, difficulty=args.difficulty))
         else:
-            summary = summarize_transcript(transcript_text, args.video_title, debug_output=False)
+            summary = summarize_transcript(transcript_text, args.video_title, debug_output=False, difficulty=args.difficulty)
     else:
         # Default to fast summarization
         print("Using fast summarization for quick, concise results...")
         if args.use_async:
-            summary = generate_fast_summary_async(transcript_text, args.video_title, debug_output=False)
+            summary = generate_fast_summary_async(transcript_text, args.video_title, debug_output=False, difficulty=args.difficulty)
         else:
-            summary = generate_fast_summary(transcript_text, args.video_title, debug_output=False)
+            summary = generate_fast_summary(transcript_text, args.video_title, debug_output=False, difficulty=args.difficulty)
     
     # Print the summary
     print("\n" + "="*50)
